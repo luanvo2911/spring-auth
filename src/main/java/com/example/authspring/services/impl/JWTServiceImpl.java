@@ -56,6 +56,7 @@ public class JWTServiceImpl implements JWTService {
   }
 
   public Boolean isTokenValid(String token, UserDetails userDetails) {
+    // Get username from token and from userDetails and compare each other
     final String username = extractUsername(token);
     return (username.equals(userDetails.getUsername()) && !isTokenExpired(token));
   }

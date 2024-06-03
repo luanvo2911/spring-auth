@@ -42,6 +42,9 @@ public class SecurityConfig {
             jwtAuthFilter, UsernamePasswordAuthenticationFilter.class);
     return http.build();
   }
+  // Create security filter allow public accessible to /api/v1/auth/signup and /api/v1/auth/signin
+  // Require authentication in api/v1/admin and api/v1/user (hasAuthority)
+  // csrf protection
 
   @Bean
   AuthenticationProvider authenticationProvider() {
