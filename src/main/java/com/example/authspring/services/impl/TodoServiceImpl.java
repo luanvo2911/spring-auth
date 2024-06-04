@@ -25,4 +25,19 @@ public class TodoServiceImpl implements TodoService {
   public List<Todo> getTodosByUserId(Integer Id){
     return todoRepository.getTodosByUserId(Id);
   }
+
+  @Override
+  public void insertNewTodos(Integer user_id, String todos){
+    todoRepository.createNewTodos(user_id, todos);
+  }
+
+  @Override
+  public void updateTodos(Todo todos){
+    todoRepository.updateTodos(todos.id, todos.todos);
+  }
+
+  @Override
+  public void deleteTodos(Todo todos){
+    todoRepository.deleteTodos(todos.id);
+  }
 }

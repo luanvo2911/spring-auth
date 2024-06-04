@@ -19,4 +19,5 @@ public class Todo {
   public Integer user_id;
 
   public String todos;
+  
 }
