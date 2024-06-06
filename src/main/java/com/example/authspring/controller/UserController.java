@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
-import com.example.authspring.entities.Role;
+// import com.example.authspring.entities.Role;
 import com.example.authspring.entities.User;
 import com.example.authspring.entities.Todo;
 import com.example.authspring.services.TodoService;
