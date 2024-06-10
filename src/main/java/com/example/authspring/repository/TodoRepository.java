@@ -14,11 +14,11 @@ import java.util.List;
 
 @Repository
 public interface TodoRepository extends JpaRepository<Todo, Long> {
-  @Query(value = "SELECT todos.id, user_id, todos FROM todos, users WHERE todos.user_id = users.id", nativeQuery = true)
-  List<Todo> getAllTodos();
+  @Query(value = "SELECT todos.id, user_id, todos FROM todos, users WHERE todos.user_id = users.id ORDER BY todos.id LIMIT :item_per_page OFFSET :page", nativeQuery = true)
+  List<Todo> getAllTodos(@Param("item_per_page") Integer item_per_page, @Param("page") Integer page);
 
-  @Query(value = "SELECT todos.id, user_id, todos FROM todos, users WHERE todos.user_id = users.id and users.id = :id", nativeQuery = true)
-  List<Todo> getTodosByUserId(@Param("id") Integer id);
+  @Query(value = "SELECT todos.id, user_id, todos FROM todos, users WHERE todos.user_id = users.id and users.id = :id ORDER BY todos.id LIMIT :item_per_page OFFSET :page", nativeQuery = true)
+  List<Todo> getTodosByUserId(@Param("id") Integer id, @Param("item_per_page") Integer item_per_page, @Param("page") Integer page);
 
   @Modifying
   @Transactional

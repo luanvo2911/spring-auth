@@ -48,6 +48,7 @@ public class AuthServiceImpl implements AuthService {
     var refreshToken = jwtService.generateRefreshToken(new HashMap<>(), user);
 
     JwtAuthenticationResponse jwtResponse = new JwtAuthenticationResponse();
+    jwtResponse.setRole(user.getRole());
     jwtResponse.setToken(jwt);
     jwtResponse.setRefreshToken(refreshToken);
 
@@ -61,6 +62,7 @@ public class AuthServiceImpl implements AuthService {
     if(jwtService.isTokenValid(requestTokenRequest.getToken(), user)){
       var jwt = jwtService.generateToken(user);
       JwtAuthenticationResponse jwtResponse = new JwtAuthenticationResponse();
+      jwtResponse.setRole(user.getRole());
       jwtResponse.setToken(jwt);
       jwtResponse.setRefreshToken(requestTokenRequest.getToken());
       return jwtResponse;

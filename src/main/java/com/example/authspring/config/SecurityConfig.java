@@ -3,6 +3,7 @@ package com.example.authspring.config;
 import com.example.authspring.entities.Role;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -33,7 +34,7 @@ public class SecurityConfig {
     http.csrf(AbstractHttpConfigurer::disable)
         .authorizeHttpRequests(request -> request.requestMatchers("/api/v1/auth/**")
             .permitAll()
-            .requestMatchers("/api/v1/admin").hasAnyAuthority(Role.ADMIN.name())
+            .requestMatchers(HttpMethod.OPTIONS,"/api/v1/admin").hasAnyAuthority(Role.ADMIN.name())
             .requestMatchers("/api/v1/user").hasAnyAuthority(Role.USER.name(), Role.ADMIN.name())
             .anyRequest().authenticated())
 

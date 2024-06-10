@@ -17,13 +17,13 @@ public class TodoServiceImpl implements TodoService {
   private final TodoRepository todoRepository;
 
   @Override
-  public List<Todo> getAllTodos(){
-    return todoRepository.getAllTodos();
+  public List<Todo> getAllTodos(Integer item_per_page, Integer page){
+    return todoRepository.getAllTodos(item_per_page, page);
   }
 
   @Override
-  public List<Todo> getTodosByUserId(Integer Id){
-    return todoRepository.getTodosByUserId(Id);
+  public List<Todo> getTodosByUserId(Integer Id, Integer item_per_page, Integer page){
+    return todoRepository.getTodosByUserId(Id, item_per_page, page);
   }
 
   @Override
@@ -37,7 +37,7 @@ public class TodoServiceImpl implements TodoService {
   }
 
   @Override
-  public void deleteTodos(Todo todos){
-    todoRepository.deleteTodos(todos.id);
+  public void deleteTodos(Integer id){
+    todoRepository.deleteTodos(id);
   }
 }
